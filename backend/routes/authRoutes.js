@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 authRouter.post("/register", async (req, res) => {
-  const { email, password, userType } = req.body;
+  const { email, password } = req.body;
   try {
     let user = await UserModel.findOne({ email });
     if (user) {
@@ -13,9 +13,8 @@ authRouter.post("/register", async (req, res) => {
     } else {
       bcrypt.hash(password, 3, async (err, hash) => {
         let newUser = new UserModel({
-          email,
+          ...req.body,
           password: hash,
-          userType,
         });
         await newUser.save();
         res.send({ msg: "Registration Successful." });
@@ -35,7 +34,7 @@ authRouter.post("/login", async (req, res) => {
     } else {
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) {
-          var token = jwt.sign({ foo: "blog" }, "mock013");
+          var token = jwt.sign({ studentId: user.id }, "revly");
           res.send({ msg: "Login Success", token });
         } else {
           res.send("Incorrect Password.");
