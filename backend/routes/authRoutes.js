@@ -35,7 +35,15 @@ authRouter.post("/login", async (req, res) => {
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) {
           var token = jwt.sign({ studentId: user.id }, "revly");
-          res.send({ msg: "Login Success", token });
+          res.send({
+            msg: "Login Success",
+            token,
+            userDetails: {
+              email: user.email,
+              userType: user.userType,
+              language: user.language,
+            },
+          });
         } else {
           res.send("Incorrect Password.");
         }
