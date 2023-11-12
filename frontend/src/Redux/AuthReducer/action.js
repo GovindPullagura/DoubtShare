@@ -25,10 +25,15 @@ export const login = (data) => (dispatch) => {
     .post("http://localhost:8080/auth/login", data)
     .then((res) => {
       console.log(res.data);
+      localStorage.setItem("token", JSON.stringify(res.data.token));
       dispatch(loginSuccessAction(res.data));
     })
     .catch((err) => {
       console.log(err.message);
       dispatch(loginFailAction());
     });
+};
+export const logout = (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch(logoutSuccessAction());
 };
