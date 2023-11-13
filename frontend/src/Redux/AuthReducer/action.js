@@ -33,7 +33,7 @@ export const login = (data) => (dispatch) => {
       dispatch(loginFailAction());
     });
 };
-export const logout = (dispatch) => {
+export const handleLogout = (dispatch) => {
   localStorage.removeItem("token");
   dispatch(logoutSuccessAction());
 };

@@ -4,7 +4,9 @@ const doubtRouter = express.Router();
 
 doubtRouter.get("/history", async (req, res) => {
   try {
-    const doubts = await DoubtModel.find({ studentId: req.user.id }).sort({
+    const doubts = await DoubtModel.find({
+      studentId: req.body.studentId,
+    }).sort({
       time: -1,
     });
 
