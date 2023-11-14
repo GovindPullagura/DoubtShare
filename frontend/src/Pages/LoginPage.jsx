@@ -78,7 +78,6 @@ export default function LoginPage() {
                 justify={"space-between"}
               >
                 <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>

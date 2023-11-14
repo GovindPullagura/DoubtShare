@@ -16,6 +16,7 @@ const userSchema = mongoose.Schema(
       enum: ["student", "tutor"],
       required: true,
     },
+    name: String,
     language: String,
     subject: String,
     grade: String,
