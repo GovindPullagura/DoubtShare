@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Box, Text, Tag } from "@chakra-ui/react";
+import { Grid, Box, Text, Tag, Heading } from "@chakra-ui/react";
 import axios from "axios";
 
 const History = () => {
@@ -23,29 +23,32 @@ const History = () => {
   }, []);
 
   return (
-    <Grid templateColumns="repeat(1, 1fr)" gap={6}>
-      {history.map((data, index) => (
-        <Box
-          key={index}
-          p={4}
-          borderWidth="1px"
-          borderRadius="lg"
-          boxShadow="md"
-          bgColor="white"
-        >
-          <Tag variant="solid" colorScheme="teal" mb={2}>
-            {data.subject}
-          </Tag>
-          <Tag variant="outline" colorScheme="blue" mb={2}>
-            {data.language}
-          </Tag>
+    <Box>
+      <Heading>Doubts History</Heading>
+      <Grid templateColumns="repeat(1, 1fr)" gap={6}>
+        {history.map((data, index) => (
+          <Box
+            key={index}
+            p={4}
+            borderWidth="1px"
+            borderRadius="lg"
+            boxShadow="md"
+            bgColor="white"
+          >
+            <Tag variant="solid" colorScheme="teal" mb={2}>
+              {data.subject}
+            </Tag>
+            <Tag variant="outline" colorScheme="blue" mb={2}>
+              {data.language}
+            </Tag>
 
-          <Text fontSize="md" color="gray.700">
-            {data.doubt}
-          </Text>
-        </Box>
-      ))}
-    </Grid>
+            <Text fontSize="md" color="gray.700">
+              {data.doubt}
+            </Text>
+          </Box>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 
