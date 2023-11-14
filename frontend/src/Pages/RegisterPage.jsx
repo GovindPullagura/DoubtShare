@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   const handleRegister = () => {
     axios
-      .post(`http://localhost:8080/auth/register`, userDetails)
+      .post(`https://doubtshare-jwmg.onrender.com/auth/register`, userDetails)
       .then((res) => {
         console.log(res.data);
         toast({

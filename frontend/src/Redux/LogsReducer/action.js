@@ -17,7 +17,7 @@ export const getBackendData = (dispatch) => {
   dispatch(dataReqAction());
 
   axios
-    .get(`http://localhost:8080/doubts/history`, {
+    .get(`https://doubtshare-jwmg.onrender.com/doubts/history`, {
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },

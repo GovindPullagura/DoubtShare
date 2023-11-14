@@ -22,7 +22,7 @@ export const logoutSuccessAction = () => {
 export const login = (data) => (dispatch) => {
   dispatch(loginReqAction());
   axios
-    .post("http://localhost:8080/auth/login", data)
+    .post("https://doubtshare-jwmg.onrender.com/auth/login", data)
     .then((res) => {
       console.log(res.data);
       localStorage.setItem("token", JSON.stringify(res.data.token));
